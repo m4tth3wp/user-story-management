@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+</head>
+<body>
+    <%= users %>
+    <%= project %>
+    <h2>Add User Stories</h2>
+    <form action='/projects/<%= project._id %>/stories' method="POST">
+    <label>Story Name</label>
+    <input type="text" name="storyName">
+    <label>Story Description</label>
+    <input type="text" name="storyDescription">
+    <label>Story Status</label>
+    <input type="number" value="1" name="storyStatus">
+    <input type="submit"value="Add Story">
+    </form>
+</body>
+</html>

@@ -1,8 +1,12 @@
 const Project = require('../models/project');
+const User = require('../models/user');
 
 function index(req, res) {
     Project.find({}, function(err, projects) {
-        res.render('projects/index', {title: 'All Projects', projects });
+        res.render('projects/index', {
+            title: 'All Projects',
+            projects
+        });
     });
 }
 
@@ -16,6 +20,17 @@ function create(req, res) {
     });
 }
 
+function show(req, res) {
+    Project.findById(req.params.id, function(err, project) {
+        User.find({}, function(err, users) {
+            res.render('projects/show', {
+                project,
+                users
+            })
+        })
+    })
+}
+
 function newProject(req, res) {
     res.render('projects/new', { title: 'Add Project' });
 }
@@ -23,5 +38,6 @@ function newProject(req, res) {
 module.exports = {
     index,
     new: newProject,
+    show,
     create
 }

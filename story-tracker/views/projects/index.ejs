@@ -3,10 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Projects</title>
+    <title><%= title %> </title>
 </head>
 <body>
     <%- include('../partials/nav') %>
+    <table id="list">
+        <thead>
+          <tr>
+            <th>Project Title</th>
+            <th>Description</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% projects.forEach(function(p) { %>
+            <tr>
+              <td><%= p.title %></td>
+              <td><%= p.description %></td>
+              <td><a href="/projects/<%= p._id %>">User Stories</a></td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+
     <p>Page for the all projects to show up for the user</p>
+    <a href="/projects/new">Add a new project!</a>
 </body>
 </html>

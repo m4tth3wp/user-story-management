@@ -8,15 +8,41 @@
 <body>
     <%= users %>
     <%= project %>
+<section class="stories">
+    <% if (project.stories.length > 0) { %>
+        <table>
+          <thead>
+            <tr>
+              <th>Story Name</th>
+              <th>Story Description</th>
+              <th>Story Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% project.stories.forEach(function(s) { %>
+              <tr>
+                <td><%= s.storyName %></td>
+                <td><%= s.storyDescription %></td>
+                <td><%= s.storyStatus %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <h5>This Project has no stories Yet</h5>
+      <% } %>
+</section>
+<section class="add-story">
     <h2>Add User Stories</h2>
-    <form action='/projects/<%= project._id %>/stories' method="POST">
-    <label>Story Name</label>
-    <input type="text" name="storyName">
-    <label>Story Description</label>
-    <input type="text" name="storyDescription">
-    <label>Story Status</label>
-    <input type="number" value="1" name="storyStatus">
-    <input type="submit"value="Add Story">
-    </form>
+        <form action='/projects/<%= project._id %>/stories' method="POST">
+            <label>Story Name</label>
+            <input type="text" name="storyName">
+            <label>Story Description</label>
+            <input type="text" name="storyDescription">
+            <label>Story Status</label>
+            <input type="number" value="1" name="storyStatus">
+            <input type="submit"value="Add Story">
+        </form>
+</section>
 </body>
 </html>

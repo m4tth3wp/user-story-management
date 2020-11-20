@@ -7,7 +7,7 @@
 </head>
 <body>
     <%= users %>
-    <%= project %>
+    <%= project.stories %>
 <section class="stories">
     <% if (project.stories.length > 0) { %>
         <table>
@@ -23,7 +23,7 @@
               <tr>
                 <td><%= s.storyName %></td>
                 <td><%= s.storyDescription %></td>
-                <td><%= s.storyStatus %></td>
+                <td><a href="/stories/<%= s._id %>/edit"><%= s.storyStatus %></a></td>
               </tr>
             <% }); %>
           </tbody>

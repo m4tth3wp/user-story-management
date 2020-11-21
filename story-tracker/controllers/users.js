@@ -3,9 +3,12 @@ const Project = require('../models/project');
 
 function getDashboard(req, res, next) {
     User.find({}, function(err, users) {
+        console.log(req.user.name)
+        let userLoggedIn = req.user.name
         res.render('admin-page', {
             title: 'Admin Page',
-            users
+            users,
+            userLoggedIn
         });
     });
 }

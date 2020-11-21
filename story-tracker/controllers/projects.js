@@ -20,6 +20,18 @@ function create(req, res) {
     });
 }
 
+// function create(req, res) {
+//     User.findById(req.user._id, function(err, user) {
+//         const project = new Project(req.body);
+//         usersProject = req.user.projects
+//         usersProject.push(project)
+//         user.save().then(function(user) {
+//             console.log(user.projects)
+//         })
+//             res.redirect('/projects');
+//         })
+//     }
+
 function show(req, res) {
     Project.findById(req.params.id, function(err, project) {
         User.find({}, function(err, users) {

@@ -1,14 +1,6 @@
 const Project = require('../models/project');
 const User = require('../models/user');
 
-// function index(req, res) {
-//     Project.find({}, function(err, projects) {
-//         res.render('projects/index', {
-//             title: 'All Projects',
-//             projects
-//         });
-//     });
-// }
 function index(req, res) {
     User.findById(req.user._id, function(err, user) {
         let projectList = user.projects
@@ -33,12 +25,18 @@ function create(req, res) {
     )}
 
 function show(req, res) {
-    Project.findById(req.params.id, function(err, project) {
-        User.findById(req.user._id, function(err, users) {
-            console.log(users.project)
+    User.findById(req.user._id, function(err, userData) {
+        let userId = req.user._id
+        let projectId = req.params.id
+        User.find({ "_id" : userId },
+        { projects: { $elemMatch: { _id: projectId } } }, function(err, projectData) {
+            let projectId = req.params.id
+            console.log('data from user model', userData)
+            console.log('project data', projectData)
             res.render('projects/show', {
-                project,
-                users
+                projectData,
+                userData,
+                projectId
             })
         })
     })

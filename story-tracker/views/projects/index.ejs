@@ -10,9 +10,9 @@
     <table id="list">
         <thead>
           <tr>
-            <th>Project Title</th>
-            <th>Description</th>
-            <th>User Stories</th>
+            <th>Stor Title</th>
+            <th>Story Description</th>
+            <th>Edit</th>
             <th></th>
           </tr>
         </thead>
@@ -22,13 +22,13 @@
             <tr>
             <td><%=p.title%></td>
             <td><%=p.description %></td>
-            <td><a href="/projects/<%=p._id %>">User Stories</a></td>
+            <td><a href="/projects/<%=p._id %>">Edit</a></td>
             </tr>
           <% }) %> 
           </tbody>
         </table>
 
-    <p>Page for the all projects to show up for the user</p>
-    <a href="/projects/new">Add a new project!</a>
+    <p>Page for the all User stories to show up for the user</p>
+    <a href="/projects/new">Add a new story!</a>
 </body>
 </html>

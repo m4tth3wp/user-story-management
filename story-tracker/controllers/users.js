@@ -7,7 +7,7 @@ function getDashboard(req, res, next) {
         let userLoggedIn = req.user.name
         let projects = req.user.projects
         console.log(user.projects)
-        console.log('******projects:*****', projects[0].title)
+        console.log('******projects:*****', projects)
         res.render('admin-page', {
             title: 'Admin Page',
             userLoggedIn,

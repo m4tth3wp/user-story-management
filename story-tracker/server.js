@@ -10,7 +10,6 @@ var methodOverride = require('method-override');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 let projectsRouter = require('./routes/projects');
-let storiesRouter = require('./routes/stories');
 
 // load the env vars
 require('dotenv').config();
@@ -46,7 +45,6 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/projects', projectsRouter);
-app.use('/', storiesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

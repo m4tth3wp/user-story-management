@@ -17,18 +17,18 @@
           </tr>
         </thead>
         <tbody>
-          <%= projectList %>
-          <% projectList.forEach(p => { %>
+          <%= storyList %>
+          <% storyList.forEach(p => { %>
             <tr>
             <td><%=p.title%></td>
             <td><%=p.description %></td>
-            <td><a href="/projects/<%=p._id %>">Edit</a></td>
+            <td><a href="/stories/<%=p._id %>">Edit</a></td>
             </tr>
           <% }) %> 
           </tbody>
         </table>
 
     <p>Page for the all User stories to show up for the user</p>
-    <a href="/projects/new">Add a new story!</a>
+    <a href="/stories/new">Add a new story!</a>
 </body>
 </html>

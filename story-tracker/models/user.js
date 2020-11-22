@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 let userSchema = new Schema({
     name: String,
     email: String,
-    projects: [{type: Schema.Types.Mixed, ref: 'Project'}],
+    stories: [{type: Schema.Types.Mixed, ref: 'Story'}],
     googleId: String
 })
 

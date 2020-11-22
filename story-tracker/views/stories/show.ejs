@@ -8,7 +8,7 @@
 <body>
 
 <section class="add-story">
-    <h2>Add User Stories</h2>
+    <h2>Edit This Story</h2>
     <%= userData%>
     <% if (userData) { %>
       <table>
@@ -24,7 +24,7 @@
     <% } else { %>
       <h5>No Stories Yet</h5>
     <% } %>
-        <form action='/projects/<%=projectId%>/stories' method="POST">
+        <form action='/stories/<%=storyId%>' method="POST">
             <label>Story Name</label>
             <input type="text" name="storyName">
             <label>Story Description</label>

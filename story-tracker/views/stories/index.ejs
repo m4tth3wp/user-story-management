@@ -13,6 +13,7 @@
             <th>Stor Title</th>
             <th>Story Description</th>
             <th>Edit</th>
+            <th>Delete</th>
             <th></th>
           </tr>
         </thead>
@@ -22,7 +23,7 @@
             <tr>
             <td><%=p.title%></td>
             <td><%=p.description %></td>
-            <td><a href="/stories/<%=p._id %>">Edit</a></td>
+            <td><a href="/stories/<%=p._id %>/edit">Edit</a></td>
             </tr>
           <% }) %> 
           </tbody>

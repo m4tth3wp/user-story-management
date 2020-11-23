@@ -10,29 +10,20 @@
 <section class="add-story">
     <h2>Edit This Story</h2>
     <%= userData%>
-    <% if (userData) { %>
-      <table>
-        <thead>
-          <tr>
-            <th>Story Title</th>
-            <th>Story Description</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-    <% } else { %>
-      <h5>No Stories Yet</h5>
-    <% } %>
-        <form action='/stories/<%=storyId%>' method="POST">
+        <form action='/stories/<%=storyId%>?_method=PUT' method="POST">
             <label>Story Name</label>
-            <input type="text" name="storyName">
+            <input type="text" name="title">
             <label>Story Description</label>
-            <input type="text" name="storyDescription">
+            <input type="text" name="description">
             <label>Story Status</label>
-            <input type="number" value="1" name="storyStatus">
-            <input type="submit"value="Add Story">
+            <input type="text" value="" name="status">
+            <input type="submit"value="Edit Story">
         </form>
+</section>
+<section class="delete">
+  <td><form action="/?_method=DELETE" method="POST">
+    <button type="submit">X</button>
+  </form></td>
 </section>
 </body>
 </html>

@@ -1,4 +1,3 @@
-const Story = require('../models/story');
 const User = require('../models/user');
 
 function index(req, res) {
@@ -15,29 +14,20 @@ function index(req, res) {
 
 function create(req, res) {
     User.findById(req.user._id, function(err, user) {
-        const story = new Story(req.body);
+        const story = req.body
         user.stories.push(story)
         user.save()
-        console.log(story)
-        console.log(req.user.stories)
         res.redirect('stories');
     }
     )}
 
 function show(req, res) {
     User.findById(req.user._id, function(err, userData) {
-        let userId = req.user._id
+        console.log(userData)
         let storyId = req.params.id
-        User.find({ "_id" : userId },
-        { stories: { $elemMatch: { _id: storyId } } }, function(err, storyData) {
-            let storyId = req.params.id
-            console.log('data from user model', userData)
-            console.log('story data', storyData)
-            res.render('stories/show', {
-                storyData,
-                userData,
-                storyId
-            })
+        res.render('stories/show', {
+            userData,
+            storyId
         })
     })
 }
@@ -46,9 +36,48 @@ function newStory(req, res) {
     res.render('stories/new', { title: 'Add Story' });
 }
 
+function updateStory(req, res) {
+    let params = req.params.id
+    // Note the cool "dot" syntax to query on the property of a subdoc
+    User.findOne({'stories._id': params}, function(err, user) {
+      // Find the comment subdoc using the id method on Mongoose arrays
+      // https://mongoosejs.com/docs/subdocs.html
+      const commentSubdoc = user.stories.id(req.params.id);
+      // Ensure that the comment was created by the logged in user
+      // Update the text of the comment
+      commentSubdoc.text = req.body.text;
+      // Save the updated book
+      user.save(function(err) {
+        console.log('readthissssssss',req.body)
+        // Redirect back to the book's show view
+        res.redirect(`/stories`);
+      });
+    });
+  }
+
+
+function deleteStory(req, res) {
+    // Note the cool "dot" syntax to query on the property of a subdoc
+    User.findOne({'stories._id': req.params.id}, function(err, user) {
+      // Find the comment subdoc using the id method on Mongoose arrays
+      // https://mongoosejs.com/docs/subdocs.html
+      const commentSubdoc = user.stories.id(req.params.id);
+      // Ensure that the comment was created by the logged in user
+      // Remove the comment using the remove method of the subdoc
+      commentSubdoc.remove();
+      // Save the updated book
+      User.save(function(err) {
+        // Redirect back to the book's show view
+        res.redirect(`/stories`);
+      });
+    });
+}
+
 module.exports = {
     index,
     new: newStory,
     show,
-    create
+    create,
+    updateStory,
+    deleteStory
 }

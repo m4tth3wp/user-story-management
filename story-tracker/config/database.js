@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 //   useCreateIndex: true
 // });
 
-mongoose.connect('mongodb://localhost/usermanagement', {
+mongoose.connect('mongodb://localhost/userstory', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true

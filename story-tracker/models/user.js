@@ -1,11 +1,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const storySchema = new Schema({
+    title: String,
+    description: String,
+    status: String
+})
 
 let userSchema = new Schema({
     name: String,
     email: String,
-    stories: [{type: Schema.Types.Mixed, ref: 'Story'}],
+    stories: [storySchema],
     googleId: String
 })
 

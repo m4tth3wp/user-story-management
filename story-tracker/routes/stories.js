@@ -13,7 +13,7 @@ router.post('/', isLoggedIn, storiesCtrl.create);
 router.get('/:id/edit', storiesCtrl.show);
 router.put('/:id', isLoggedIn, storiesCtrl.updateStory);
 
-
+//delete a story
 router.delete('/:id', storiesCtrl.deleteStory);
 
 function isLoggedIn(req, res, next) {

@@ -65,7 +65,7 @@ function deleteStory(req, res) {
       // Remove the comment using the remove method of the subdoc
       commentSubdoc.remove();
       // Save the updated book
-      User.save(function(err) {
+      user.save(function(err) {
         // Redirect back to the book's show view
         res.redirect(`/stories`);
       });

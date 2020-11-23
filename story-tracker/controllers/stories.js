@@ -42,14 +42,13 @@ function updateStory(req, res) {
     User.findOne({'stories._id': params}, function(err, user) {
       // Find the comment subdoc using the id method on Mongoose arrays
       // https://mongoosejs.com/docs/subdocs.html
-      const commentSubdoc = user.stories.id(req.params.id);
-      // Ensure that the comment was created by the logged in user
+      const storySubdoc = user.stories.id(req.params.id);
       // Update the text of the comment
-      commentSubdoc.text = req.body.text;
+      storySubdoc.title = req.body.title;
+      storySubdoc.description = req.body.description;
+      storySubdoc.status = req.body.status;
       // Save the updated book
       user.save(function(err) {
-        console.log('readthissssssss',req.body)
-        // Redirect back to the book's show view
         res.redirect(`/stories`);
       });
     });

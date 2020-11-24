@@ -11,7 +11,6 @@ function index(req, res) {
     })
 }
 
-
 function create(req, res) {
     User.findById(req.user._id, function(err, user) {
         const story = req.body
@@ -21,15 +20,19 @@ function create(req, res) {
     }
     )}
 
-function show(req, res) {
-    User.findById(req.user._id, function(err, userData) {
-        console.log(userData)
-        let storyId = req.params.id
+function editStory(req, res) {
+    let storyId = req.params.id
+    User.findOne({'stories._id': storyId}, function(err, user) {
+        const storyDoc = user.stories.id(storyId)
+        let storyTitle = storyDoc.title
+        let storyDescription = storyDoc.description
         res.render('stories/show', {
-            userData,
-            storyId
+            user,
+            storyId,
+            storyTitle,
+            storyDescription
         })
-    })
+    } )
 }
 
 function newStory(req, res) {
@@ -38,10 +41,7 @@ function newStory(req, res) {
 
 function updateStory(req, res) {
     let params = req.params.id
-    // Note the cool "dot" syntax to query on the property of a subdoc
     User.findOne({'stories._id': params}, function(err, user) {
-      // Find the comment subdoc using the id method on Mongoose arrays
-      // https://mongoosejs.com/docs/subdocs.html
       const storySubdoc = user.stories.id(req.params.id);
       // Update the text of the comment
       storySubdoc.title = req.body.title;
@@ -54,19 +54,12 @@ function updateStory(req, res) {
     });
   }
 
-
 function deleteStory(req, res) {
-    // Note the cool "dot" syntax to query on the property of a subdoc
     User.findOne({'stories._id': req.params.id}, function(err, user) {
       // Find the comment subdoc using the id method on Mongoose arrays
-      // https://mongoosejs.com/docs/subdocs.html
       const commentSubdoc = user.stories.id(req.params.id);
-      // Ensure that the comment was created by the logged in user
-      // Remove the comment using the remove method of the subdoc
       commentSubdoc.remove();
-      // Save the updated book
       user.save(function(err) {
-        // Redirect back to the book's show view
         res.redirect(`/stories`);
       });
     });
@@ -75,7 +68,7 @@ function deleteStory(req, res) {
 module.exports = {
     index,
     new: newStory,
-    show,
+    editStory,
     create,
     updateStory,
     deleteStory

@@ -10,7 +10,7 @@ router.get('/new', isLoggedIn, storiesCtrl.new);
 router.post('/', isLoggedIn, storiesCtrl.create);
 
 //get the edit sotry page and update the story
-router.get('/:id/edit', storiesCtrl.show);
+router.get('/:id/edit', storiesCtrl.editStory);
 router.put('/:id', isLoggedIn, storiesCtrl.updateStory);
 
 //delete a story

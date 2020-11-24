@@ -2,9 +2,20 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const storySchema = new Schema({
-    title: String,
-    description: String,
-    status: String
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    status: {
+        type: String,
+        enum: ['Open', 'In-progress', 'Completed', 'Deployed', 'UAT'],
+        required: true
+
+    }
 })
 
 let userSchema = new Schema({

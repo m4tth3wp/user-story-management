@@ -18,7 +18,7 @@
           </tr>
         </thead>
         <tbody>
-          <%= storyList %>
+          <% storyList %>
           <% storyList.forEach(p => { %>
             <tr>
             <td><%=p.title%></td>
@@ -29,8 +29,6 @@
           <% }) %> 
           </tbody>
         </table>
-
-    <p>Page for the all User stories to show up for the user</p>
     <a href="/stories/new">Add a new story!</a>
 </body>
 </html>

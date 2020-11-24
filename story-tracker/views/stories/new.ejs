@@ -6,13 +6,21 @@
     <title>New Story</title>
 </head>
 <body>
+    <h2>Add a New Story</h2>
+    <%- include('../partials/nav') %>
     <form id="new-story" action="/stories" method="POST">
         <label>Story Title</label>
         <input type="text" name="title">
         <label>Story Description</label>
         <input type="text" name="description">
         <label>Status</label>
-        <input type="text" name="status">
+        <select name="status">
+            <option value="Open" selected>Open</option>
+            <option value="In-progress">In-progress</option>
+            <option value="Completed">Completed</option>
+            <option value="Deployed">Deployed</option>
+            <option value="UAT">UAT</option>
+          </select>
         <input type="submit" value="Add Story">
 
     </form>

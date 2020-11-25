@@ -7,7 +7,7 @@
 </head>
 <body>
     <%- include('../partials/nav') %>
-    <table id="list">
+    <!-- <table id="list">
         <thead>
           <tr>
             <th>Story Title</th>
@@ -28,7 +28,19 @@
             </tr>
           <% }) %> 
           </tbody>
-        </table>
+        </table> -->
+        <section class="story-index">
+          <% storyList %>
+          <% storyList.forEach(p => { %>
+            <div>
+              <h2><%=p.title%><a href="/stories/<%=p._id %>/edit">Edit</a></h2>
+              <h3>Description</h3>
+              <p><%=p.description %></p>
+              <div class="status">Status: <%=p.status%></div>
+              <div class="edit"></div>
+            </div>
+            <% }) %>
+        </section>
     <a href="/stories/new">Add a new story!</a>
 </body>
 </html>

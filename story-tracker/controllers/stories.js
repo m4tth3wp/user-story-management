@@ -3,10 +3,12 @@ const User = require('../models/user');
 function index(req, res) {
     User.findById(req.user._id, function(err, user) {
         let storyList = user.stories
+        let userLoggedIn = req.user.name
         res.render('stories/index', {
             title: 'All Stories',
             user,
-            storyList
+            storyList,
+            userLoggedIn
         })
     })
 }

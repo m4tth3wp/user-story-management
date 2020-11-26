@@ -9,26 +9,27 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script defer src="/public/javascripts/app.js"></script>
 </head>
-<body>
+<body class="light-green lighten-4">
 
 <section class="add-story">
-    <h2>Edit This Story</h2>
     <%- include('../partials/nav') %>
+    <h2>Edit This Story</h2>
         <form action='/stories/<%=storyId%>?_method=PUT' method="POST">
             <label>Story Name</label>
             <input type="text" name="title" value="<%= storyTitle%>">
             <label>Story Description</label>
             <input type="text" name="description" value="<%= storyDescription%>">
             <label>Story Status</label>
-            <select class=".input-field" name="status">
+            <div class="input-field col s12">
+            <select class="browser-default" name="status">
               <option value="Open" selected>Open</option>
               <option value="In-progress">In-progress</option>
               <option value="Completed">Completed</option>
               <option value="Deployed">Deployed</option>
               <option value="UAT">UAT</option>
             </select>
+          </div>
             <input type="submit"value="Edit Story">
         </form>
 </section>
@@ -37,5 +38,6 @@
     <button type="submit">DELETE STORY</button>
   </form></td>
 </section>
+<script src="/public/javascripts/app.js"></script>
 </body>
 </html>

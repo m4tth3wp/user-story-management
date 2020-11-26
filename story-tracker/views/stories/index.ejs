@@ -4,43 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %> </title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
+  <div class="card-panel light-green lighten-4">
     <%- include('../partials/nav') %>
-    <!-- <table id="list">
-        <thead>
-          <tr>
-            <th>Story Title</th>
-            <th>Story Description</th>
-            <th>Status</th>
-            <th>Edit</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% storyList %>
-          <% storyList.forEach(p => { %>
-            <tr>
-            <td><%=p.title%></td>
-            <td><%=p.description %></td>
-            <td><%=p.status%></td>
-            <td><a href="/stories/<%=p._id %>/edit">Edit</a></td>
-            </tr>
-          <% }) %> 
-          </tbody>
-        </table> -->
         <section class="story-index">
+          <div class="row">
+          <div class="col s12 .left-align"> 
+            <h4>Here Are Your Stories:</h1>
+          </div>
+          </div>
           <% storyList %>
           <% storyList.forEach(p => { %>
-            <div>
-              <h2><%=p.title%><a href="/stories/<%=p._id %>/edit">Edit</a></h2>
-              <h3>Description</h3>
-              <p><%=p.description %></p>
-              <div class="status">Status: <%=p.status%></div>
-              <div class="edit"></div>
-            </div>
+              <div class="row">
+                <div class="col s12 m6">
+                  <div class="card  light-green">
+                    <div class="card-content white-text">
+                      <span class="card-title"><%=p.title%></span>
+                      <p><%=p.description %></p>
+                    </div>
+                    <div class="card-action">
+                      <a href="/stories/<%=p._id %>/edit">Refine</a>
+                      <a href="#">Delete</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <% }) %>
         </section>
-    <a href="/stories/new">Add a new story!</a>
+  </div>
 </body>
 </html>

@@ -19,24 +19,33 @@
             <h4><%=userLoggedIn%>, Here Are Your Stories:</h1>
           </div>
           </div>
-          <% storyList %>
+          <% if(storyList.length === 0) { %>
+            <h4> No Stories Yet...add something now!</h4>
+            <% } else { %>
           <% storyList.forEach(p => { %>
               <div class="row">
-                <div class="col s12 m6">
+                <div class="col s12 m8 l4">
                   <div class="card  light-green">
                     <div class="card-content white-text">
                       <span class="card-title"><%=p.title%></span>
+                      <hr class="light-green darken-4">
                       <p><%=p.description %></p>
-                      <p><%=p.status %></p>
+                      <br>
+                      <br>
+                      <p>Status: <%=p.status %></p>
                     </div>
                     <div class="card-action">
                       <a href="/stories/<%=p._id %>/edit"> <i class="material-icons">edit</i></a>
-                      <a href="/stories/<%=p._id %>/edit"> <i class="material-icons">delete</i></a>
+                      <form id="delete_form" action="/stories/<%=p._id%>?_method=DELETE" method="POST">
+                        <a href="javascript:{}" onclick="document.getElementById('delete_form').submit();"> <i id="delete_btn" class="material-icons">delete</i></a>
+                      </form>
+                      
                     </div>
                   </div>
                 </div>
               </div>
             <% }) %>
+            <% } %>
         </section>
   </div>
 </body>

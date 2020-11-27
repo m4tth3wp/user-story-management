@@ -19,7 +19,8 @@
             <label>Story Name</label>
             <input type="text" name="title" value="<%= storyTitle%>">
             <label>Story Description</label>
-            <input type="text" name="description" value="<%= storyDescription%>">
+            <textarea type="text" rows="50" cols="20" class="materialize-textarea" name="description"><%= storyDescription%></textarea>
+            <!-- <input type="text" name="description" value="<%= storyDescription%>"> -->
             <label>Story Status</label>
             <div class="input-field col s12">
             <select class="browser-default" name="status">
@@ -30,7 +31,8 @@
               <option value="UAT">UAT</option>
             </select>
           </div>
-            <input type="submit"value="Edit Story">
+            <button class="btn waves-effect waves-light light-green darken-3" type="submit" name="action">Edit
+            </button>
         </form>
 </section>
 <section class="delete">
@@ -38,6 +40,5 @@
     <button type="submit">DELETE STORY</button>
   </form></td>
 </section>
-<script src="/public/javascripts/app.js"></script>
 </body>
 </html>

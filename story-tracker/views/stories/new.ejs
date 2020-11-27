@@ -13,22 +13,27 @@
 <body class="light-green lighten-4">
     <%- include('../partials/nav') %>
     <h2>Add a New Story</h2>
-    <form id="new-story" action="/stories" method="POST">
-        <label>Story Title</label>
-        <input type="text" name="title">
-        <label>Story Description</label>
-        <textarea type="text" rows="50" cols="20" class="materialize-textarea" name="description"></textarea>
-        <label>Status</label>
-        <select class="browser-default" name="status">
-            <option value="Open" selected>Open</option>
+    <form class="col s12" action='/stories' method="POST">
+        <div class="input-field col s6">
+          <input id="story_title" type="text" name="title">
+          <label for="story_title">Story Title</label>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="textarea1" class="materialize-textarea" name="description"></textarea>
+          <label for="textarea1">Story Description</label>
+        </div>
+        <div class="input-field col s4">
+          <select class="browser-default" name="status">
+            <option disabled selected>Story Status</option>
+            <option value="Open">Open</option>
             <option value="In-progress">In-progress</option>
             <option value="Completed">Completed</option>
             <option value="Deployed">Deployed</option>
             <option value="UAT">UAT</option>
           </select>
-          <br>
+        </div>
         <input class="waves-effect light-green darken-3 btn" type="submit" value="Add">
-
-    </form>
+      </form>
 </body>
 </html>
+

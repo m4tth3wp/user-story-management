@@ -1,3 +1,17 @@
-.btn {
-    color: #ffffff;
+h1 {
+    font-family: 'Satisfy', cursive;
+}
+
+body {
+    background-image: url('../images/homepage.jpg');
+}
+
+.google {
+    font-size: larger;
+    color: white;
+    font-weight: bolder;
+}
+
+.google:hover {
+    background-color: forestgreen;
 }

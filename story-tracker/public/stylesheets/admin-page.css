@@ -1,0 +1,22 @@
+h2 {
+    font-family: 'Satisfy', cursive;
+}
+
+body {
+    background-image: url('../images/admin-page.jpg');
+}
+
+h4 {
+    color: ghostwhite;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+a {
+    color: ghostwhite;
+    transition: 0.3s;
+}
+
+a:hover{
+    font-weight: bolder;
+    background-color: #3e8e41;
+}

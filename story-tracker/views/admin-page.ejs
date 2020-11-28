@@ -6,17 +6,21 @@
     <title><%= title %></title>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+    <link rel="stylesheet" href="stylesheets/admin-page.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Satisfy&display=swap" rel="stylesheet"> 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body class="light-green lighten-4">
     <%- include('partials/nav') %>
-    <h3>User dashboard</h3>
+    <div class="card-panel light-green z-depth-5 center-align">
+    <h2>User dashboard</h3>
     <ul>
        <h4>Welcome <%= userLoggedIn %> </h4>
         <li><a href="/stories">Stories</a></li>
         <li><a href="#">Developers (Coming soon)</a></li>
     </ul>
+    </div>
 </body>
 </html>
